@@ -1,5 +1,7 @@
 package rocks.zipcode;
 
+import java.util.Formatter;
+
 /**
  * rocks.zipcode.PayDay
  *
@@ -49,8 +51,17 @@ public class PayDay {
     * return name, grossPay, deduction, netPay as String
      */
     public String pay(String n, double rate, double worked, double deduct) {
-        return null;
+       double grossPay = rate * worked;
+       double deduction = grossPay * deduct;
+       double netPay = grossPay - deduction;
+       Formatter formatter = new Formatter();
+       String result = "Kris %.2f %.2f %.2f";
+       formatter.format(result, grossPay, deduction, netPay);
+       return formatter.toString();
+
     }
+
+
 
 
     /**
@@ -96,4 +107,7 @@ public class PayDay {
         };
         return cards;
     }
+
+
+
 }
